@@ -18,6 +18,11 @@
   content: " ";
 }
 
+body {
+  background-image: url("face.jpg");
+  background-repeat: no-repeat;
+}
+
 #left_eye {
   left: 190px;
   top: 345px;
@@ -26,4 +31,34 @@
 #right_eye {
   left: 390px;
   top: 335px;
+}
+
+@media only screen
+and (max-device-width : 400px)
+and (orientation : portrait) {
+  body {
+    background-size: contain;
+  }
+
+  .eye {
+    height: 100px;
+    width: 100px;
+  }
+
+  .eye:after {
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+  }
+
+  #left_eye {
+    left: 310px;
+    top: 590px;
+  }
+
+  #right_eye {
+    left: 660px;
+    top: 570px;
+  }
 }
