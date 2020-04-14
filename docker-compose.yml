@@ -22,7 +22,7 @@ services:
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
     depends_on:
-      - nodejs
+      - kolka
     networks:
       - app-network
   certbot:
@@ -34,7 +34,7 @@ services:
       - web-root:/var/www/html
     depends_on:
       - webserver
-    command: certonly --webroot --webroot-path=/var/www/html --email zduderman@gmail.com --agree-tos --no-eff-email --staging -d колька.рф  -d www.колька.рф
+    command: certonly --webroot --webroot-path=/var/www/html --email zduderman@gmail.com --agree-tos --no-eff-email --staging -d xn--80atado9f.xn--p1ai  -d www.xn--80atado9f.xn--p1ai
 
 volumes:
   certbot-etc:
