@@ -1,0 +1,29 @@
+.eye {
+  position: absolute;
+  display: inline-block;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  background: rgb(231, 240, 255);
+}
+
+.eye:after { /*pupil*/
+  position: absolute;
+  bottom: 27px;
+  right: 10px;
+  width: 10px;
+  height: 10px;
+  background: rgb(0, 0, 0);
+  border-radius: 50%;
+  content: " ";
+}
+
+#left_eye {
+  left: 190px;
+  top: 345px;
+}
+
+#right_eye {
+  left: 390px;
+  top: 335px;
+}
