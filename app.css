@@ -34,8 +34,19 @@ body {
 }
 
 .permission-btn {
-  font-size: 5em;
-  background: wheat;
+  font-size: 4em;
+  position: absolute;
+  top: 930px;
+  left: 367px;
+  width: 50%;
+}
+
+.permission-btn.hidden text {
+  fill: transparent;
+}
+
+text {
+  fill: rgb(0, 255, 0);
 }
 
 .ball {
@@ -107,6 +118,10 @@ z-index: -1;
   perspective-origin: 50% 50%;
 }
 
+path {
+  fill: transparent;
+}
+
 @media only screen
 and (max-device-width : 400px)
 and (orientation : portrait) {
@@ -116,16 +131,16 @@ and (orientation : portrait) {
 
   #left_eye {
     left: 290px;
-    top: 578px;
+    top: 570px;
   }
 
   #right_eye {
-    left: 517px;
-    top: 541px;
+    left: 640px;
+    top: 390px;
   }
 
   .ball {
-    width: 130px;
-    height: 130px;
+    width: 150px;
+    height: 150px;
   }
 }
