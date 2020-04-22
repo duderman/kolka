@@ -24,13 +24,87 @@ body {
 }
 
 #left_eye {
-  left: 190px;
-  top: 345px;
+  left: 148px;
+  top: 306px;
 }
 
 #right_eye {
-  left: 390px;
-  top: 335px;
+  left: 241px;
+  top: 295px;
+}
+
+.permission-btn {
+  font-size: 5em;
+  background: wheat;
+}
+
+.ball {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  margin: 0;
+  border-radius: 50%;
+  position: relative;
+  background: radial-gradient(circle at 50% 40%, #fcfcfc, #efeff1 66%, #9b5050 100%);
+}
+
+.iris {
+  width: 40%;
+  height: 40%;
+  margin: 30%;
+  border-radius: 100%;
+  background: radial-gradient(circle at 50% 50%, #208ab4 0%, #6fbfff 30%, #4381b2 100%);
+  position: absolute;
+}
+.iris:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 37.5%;
+  height: 37.5%;
+  border-radius: 100%;
+  top: 31.25%;
+  left: 31.25%;
+  background: black;
+}
+.iris:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 31.25%;
+  height: 31.25%;
+  border-radius: 100%;
+  top: 18.75%;
+  left: 18.75%;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.ball .shadow {
+position: absolute;
+width: 100%;
+height: 100%;
+background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0) 50%);
+-webkit-transform: rotateX(90deg) translateZ(-150px);
+-moz-transform: rotateX(90deg) translateZ(-150px);
+-ms-transform: rotateX(90deg) translateZ(-150px);
+-o-transform: rotateX(90deg) translateZ(-150px);
+transform: rotateX(90deg) translateZ(-150px);
+z-index: -1;
+}
+.stage {
+  width: 300px;
+  height: 300px;
+  display: inline-block;
+  -webkit-perspective: 1200px;
+  -moz-perspective: 1200px;
+  -ms-perspective: 1200px;
+  -o-perspective: 1200px;
+  perspective: 1200px;
+  -webkit-perspective-origin: 50% 50%;
+  -moz-perspective-origin: 50% 50%;
+  -ms-perspective-origin: 50% 50%;
+  -o-perspective-origin: 50% 50%;
+  perspective-origin: 50% 50%;
 }
 
 @media only screen
@@ -40,25 +114,18 @@ and (orientation : portrait) {
     background-size: contain;
   }
 
-  .eye {
-    height: 100px;
-    width: 100px;
-  }
-
-  .eye:after {
-    top: 10px;
-    left: 30px;
-    width: 40px;
-    height: 40px;
-  }
-
   #left_eye {
-    left: 310px;
-    top: 590px;
+    left: 290px;
+    top: 578px;
   }
 
   #right_eye {
-    left: 660px;
-    top: 570px;
+    left: 517px;
+    top: 541px;
+  }
+
+  .ball {
+    width: 130px;
+    height: 130px;
   }
 }

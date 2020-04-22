@@ -1,13 +1,27 @@
 function updateEye(eye, pointerX, pointerY) {
-    var x = (eye.offset().left) + (eye.width() / 2);
-    var y = (eye.offset().top) + (eye.height() / 2);
-    var rad = Math.atan2(pointerX - x, pointerY - y);
-    var rot = (rad * (180 / Math.PI) * -1) + 180;
-    eye.css({
-        '-webkit-transform': 'rotate(' + rot + 'deg)',
-        '-moz-transform': 'rotate(' + rot + 'deg)',
-        '-ms-transform': 'rotate(' + rot + 'deg)',
-        'transform': 'rotate(' + rot + 'deg)'
+    var iris = $('.iris', eye)
+
+    var minx = eye.offset().left + (iris.width() / 2) + 5;
+    var maxx = eye.offset().left + eye.width() - (iris.width() / 2) - 5;
+    var centerx = eye.offset().left + eye.width() / 2;
+    var x = Math.max(minx, pointerX);
+    x = Math.min(maxx, x);
+    x = x - centerx;
+
+    var miny = eye.offset().top + (iris.height() / 2) + 5;
+    var maxy = eye.offset().top + eye.height() - (iris.height() / 2) - 5;
+    var centery = eye.offset().top + eye.height() / 2;
+    var y = Math.max(miny, pointerY);
+    y = Math.min(maxy, y);
+    y = y - centery;
+
+    var style = 'translateX('+x+'px) translateY('+y+'px)'
+
+    iris.css({
+        '-webkit-transform': style,
+        '-moz-transform': style,
+        '-ms-transform': style,
+        'transform': style
     });
 }
 
@@ -28,6 +42,18 @@ function handleOrientation(event) {
     });
 }
 
+function onPermissionBtnClick() {
+    $('.permission-btn').hide();
+    DeviceOrientationEvent.requestPermission()
+    .then(function (permissionState) {
+        if (permissionState === 'granted') {
+            window.addEventListener("deviceorientation", handleOrientation, true);
+        } else {
+            console.error("WAT?", permissionState);
+        }
+    }).catch(console.error);
+}
+
 $(function () {
     $("body").mousemove(function (event) {
         x = event.pageX
@@ -36,5 +62,10 @@ $(function () {
         updateEye($('#right_eye'), x, y)
     });
 
-    window.addEventListener("deviceorientation", handleOrientation, true);
+    if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+        $('.permission-btn').show();
+        $('.permission-btn').on('click', onPermissionBtnClick);
+    } else if (window.DeviceOrientationEvent) {
+        window.addEventListener("deviceorientation", handleOrientation, true);
+    }
 });
