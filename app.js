@@ -25,20 +25,40 @@ function updateEye(eye, pointerX, pointerY) {
     });
 }
 
+var initialA
+var initialB
+
 function handleOrientation(event) {
-    var absolute = event.absolute;
     var alpha = event.alpha;
+    if (!initialA) {
+        initialA = alpha
+    }
+    var deltaA = initialA - alpha
+
     var beta = event.beta;
-    var gamma = event.gamma;
+    if (!initialB) {
+        initialB = beta
+    }
+    var deltaB = initialB - beta
 
-    rot = -1 * gamma
+    var eye = $('.ball')
+    var iris = $('.iris')
 
-    var eye = $('.eye')
-    eye.css({
-        '-webkit-transform': 'rotate(' + rot + 'deg)',
-        '-moz-transform': 'rotate(' + rot + 'deg)',
-        '-ms-transform': 'rotate(' + rot + 'deg)',
-        'transform': 'rotate(' + rot + 'deg)'
+    var maxDelta = eye.width() / 2 - iris.width() / 2 + 10
+
+    var x = Math.max(deltaA, -1 * maxDelta)
+    x = Math.min(x, maxDelta)
+
+    var y = Math.max(deltaB, -1 * maxDelta)
+    y = Math.min(y, maxDelta)
+
+    var style = 'translateX('+x+'px) translateY('+y+'px)'
+
+    iris.css({
+        '-webkit-transform': style,
+        '-moz-transform': style,
+        '-ms-transform': style,
+        'transform': style
     });
 }
 
