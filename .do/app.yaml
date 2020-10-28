@@ -1,6 +1,6 @@
 name: kolka
-services:
-- dockerfile_path: Dockerfile
+static_sites:
+- environment_slug: html
   github:
     branch: master
     deploy_on_push: true
