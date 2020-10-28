@@ -1,0 +1,8 @@
+name: kolka
+services:
+- dockerfile_path: Dockerfile
+  github:
+    branch: master
+    deploy_on_push: true
+    repo: duderman/kolka
+  name: kolka
